@@ -50,7 +50,9 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/requirejs/require.js"
+            ]
           },
           "configurations": {
             "production": {
