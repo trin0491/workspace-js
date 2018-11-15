@@ -51,7 +51,10 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/requirejs/require.js"
+              "./node_modules/requirejs/require.js",
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
             ]
           },
           "configurations": {
@@ -150,6 +153,156 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "hydrogen-widget": {
+      "root": "projects/hydrogen-widget/",
+      "sourceRoot": "projects/hydrogen-widget/src",
+      "projectType": "application",
+      "prefix": "ws",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true,
+          "spec": false
+        },
+        "@schematics/angular:class": {
+          "spec": false
+        },
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:guard": {
+          "spec": false
+        },
+        "@schematics/angular:module": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:service": {
+          "spec": false
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/hydrogen-widget",
+            "index": "projects/hydrogen-widget/src/index.html",
+            "main": "projects/hydrogen-widget/src/main.ts",
+            "polyfills": "projects/hydrogen-widget/src/polyfills.ts",
+            "tsConfig": "projects/hydrogen-widget/tsconfig.app.json",
+            "assets": [
+              "projects/hydrogen-widget/src/favicon.ico",
+              "projects/hydrogen-widget/src/assets"
+            ],
+            "styles": [
+              "projects/hydrogen-widget/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/hydrogen-widget/src/environments/environment.ts",
+                  "with": "projects/hydrogen-widget/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hydrogen-widget:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "hydrogen-widget:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "hydrogen-widget:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/hydrogen-widget/src/test.ts",
+            "polyfills": "projects/hydrogen-widget/src/polyfills.ts",
+            "tsConfig": "projects/hydrogen-widget/tsconfig.spec.json",
+            "karmaConfig": "projects/hydrogen-widget/karma.conf.js",
+            "styles": [
+              "projects/hydrogen-widget/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/hydrogen-widget/src/favicon.ico",
+              "projects/hydrogen-widget/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/hydrogen-widget/tsconfig.app.json",
+              "projects/hydrogen-widget/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "hydrogen-widget-e2e": {
+      "root": "projects/hydrogen-widget-e2e/",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/hydrogen-widget-e2e/protractor.conf.js",
+            "devServerTarget": "hydrogen-widget:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "hydrogen-widget:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "projects/hydrogen-widget-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
