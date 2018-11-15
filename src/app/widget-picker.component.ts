@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 
 @Component({
   selector: "ws-widget-picker",
@@ -16,15 +16,25 @@ export class WidgetPickerComponent implements OnInit {
 
   widgetName: string;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
   add() {
-    const elm = window.document.createElement(this.widgetName);
-    if (elm) {
-      window.document.body.appendChild(elm);
-    }
+    require.config({
+      baseUrl: "/dist",
+      paths: {
+        "some": "some/v1.0"
+      },
+      waitSeconds: 15
+    });
+    requirejs([this.widgetName], () => {
+      const elm = window.document.createElement(this.widgetName);
+      if (elm) {
+        window.document.body.appendChild(elm);
+      }
+    });
   }
 }
