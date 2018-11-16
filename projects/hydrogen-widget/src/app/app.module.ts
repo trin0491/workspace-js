@@ -21,7 +21,7 @@ export class AppModule {
 
   ngDoBootstrap() {
     const AppComponentElement = createCustomElement(AppComponent, { injector: this.injector });
-    customElements.define("ws-hydrogen-widget", AppComponentElement);
+    customElements.define("hydrogen-widget", AppComponentElement);
   }
 
 }

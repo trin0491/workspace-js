@@ -23,13 +23,6 @@ export class WidgetPickerComponent implements OnInit {
   }
 
   add() {
-    require.config({
-      baseUrl: "/dist",
-      paths: {
-        "some": "some/v1.0"
-      },
-      waitSeconds: 15
-    });
     requirejs([this.widgetName], () => {
       const elm = window.document.createElement(this.widgetName);
       if (elm) {
