@@ -34,6 +34,8 @@ export class WidgetPickerComponent implements OnInit {
     this.moduleLoader.load("src/app/lazy.module#LazyModule").then((factory: NgModuleFactory<any>) => {
       const module: NgModuleRef<any> = factory.create(this.injector);
       this.addElement();
+    }).catch((err) => {
+      console.error("Failed to load module", err);
     });
   }
 
