@@ -4,7 +4,7 @@ import { Component, OnInit } from "@angular/core";
   selector: "ws-deuterium-widget",
   template: `
     <p>
-      deuterium-widget works!
+      deuterium-widget works yay!
     </p>
   `,
   styles: []
