@@ -51,11 +51,11 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "./node_modules/requirejs/require.js",
               {
+                "input": "./node_modules/requirejs/require.js"
+              }, {
                 "input": "node_modules/@webcomponents/custom-elements/src/native-shim.js"
-              },
-              {
+              }, {
                 "input": "dist/hydrogen-widget/main.js", "bundleName": "hydrogen-widget", "lazy": true
               }
             ]
@@ -88,7 +88,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "workspace-js:build"
           },
