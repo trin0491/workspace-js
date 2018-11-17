@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Injector, NgModuleFactory, NgModuleFactoryLoader, NgModuleRef, OnInit} from "@angular/core";
 
 @Component({
   selector: "ws-widget-picker",
@@ -6,6 +6,7 @@ import {Component, OnInit} from "@angular/core";
     <div>
       <form>
         <input [(ngModel)]="widgetName" name="widgetName">
+        <button (click)="requireElement()">Require</button>
         <button (click)="loadElement()">Load</button>
         <button (click)="addElement()">Add</button>
       </form>
@@ -17,14 +18,21 @@ export class WidgetPickerComponent implements OnInit {
 
   widgetName: string;
 
-  constructor() {
+  constructor(private moduleLoader: NgModuleFactoryLoader, private injector: Injector) {
   }
 
   ngOnInit() {
   }
 
-  loadElement() {
+  requireElement() {
     requirejs([this.widgetName], () => {
+      this.addElement();
+    });
+  }
+
+  loadElement() {
+    this.moduleLoader.load("src/app/lazy.module#LazyModule").then((factory: NgModuleFactory<any>) => {
+      const module: NgModuleRef<any> = factory.create(this.injector);
       this.addElement();
     });
   }
