@@ -16,6 +16,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "deuterium-widget": [
+        "dist/deuterium-widget"
+      ],
+      "deuterium-widget/*": [
+        "dist/deuterium-widget/*"
+      ]
+    }
   }
 }
