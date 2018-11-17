@@ -6,7 +6,8 @@ import {Component, OnInit} from "@angular/core";
     <div>
       <form>
         <input [(ngModel)]="widgetName" name="widgetName">
-        <button (click)="add()">Add</button>
+        <button (click)="loadElement()">Load</button>
+        <button (click)="addElement()">Add</button>
       </form>
     </div>
   `,
@@ -22,12 +23,16 @@ export class WidgetPickerComponent implements OnInit {
   ngOnInit() {
   }
 
-  add() {
+  loadElement() {
     requirejs([this.widgetName], () => {
-      const elm = window.document.createElement(this.widgetName);
-      if (elm) {
-        window.document.body.appendChild(elm);
-      }
+      this.addElement();
     });
+  }
+
+  addElement() {
+    const elm = window.document.createElement(this.widgetName);
+    if (elm) {
+      window.document.body.appendChild(elm);
+    }
   }
 }
