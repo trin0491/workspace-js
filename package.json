@@ -1,13 +1,15 @@
 {
   "name": "workspace-js",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "hydrogen-widget:build": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true",
+    "hydrogen-widget:serve": "ng serve hydrogen-widget --extra-webpack-config webpack.extra.js --single-bundle true --vendor-chunk false"
   },
   "private": true,
   "dependencies": {
