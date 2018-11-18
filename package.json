@@ -8,6 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "deuterium-widget:build": "ng build deuterium-widget",
+    "deuterium-widget:watch": "ng build deuterium-widget --watch",
     "hydrogen-widget:build": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true",
     "hydrogen-widget:serve": "ng serve hydrogen-widget --extra-webpack-config webpack.extra.js --single-bundle true --vendor-chunk false"
   },
