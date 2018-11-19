@@ -8,13 +8,14 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "all:build": "npm run rxjs:build && npm run deuterium:build && npm run hydrogen:build && npm run build",
+    "all:build": "npm run rxjs:build && npm run deuterium:build && npm run hydrogen:build && npm run shared-lib:build",
     "rxjs:build": "rollup -c rollup.config.js",
     "deuterium:build": "ng build deuterium-widget",
     "deuterium:watch": "ng build deuterium-widget --watch",
     "hydrogen:build": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true",
     "hydrogen:watch": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch",
-    "hydrogen:serve": "ng serve hydrogen-widget --extra-webpack-config webpack.extra.js --single-bundle true --vendor-chunk false"
+    "hydrogen:serve": "ng serve hydrogen-widget --extra-webpack-config webpack.extra.js --single-bundle true --vendor-chunk false",
+    "shared-lib:build": "ng build shared-lib"
   },
   "private": true,
   "dependencies": {

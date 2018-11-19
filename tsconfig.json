@@ -23,6 +23,12 @@
       ],
       "deuterium-widget/*": [
         "dist/deuterium-widget/*"
+      ],
+      "shared-lib": [
+        "dist/shared-lib"
+      ],
+      "shared-lib/*": [
+        "dist/shared-lib/*"
       ]
     }
   }
