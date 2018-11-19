@@ -69,7 +69,7 @@
                 "lazy": true
               },
               {
-                "input": "dist/deuterium-widget/bundles/deuterium-widget.umd.js",
+                "input": "dist/deuterium-widget/main.js",
                 "bundleName": "deuterium-widget",
                 "lazy": true
               },
@@ -345,41 +345,6 @@
         }
       }
     },
-    "deuterium-widget": {
-      "root": "projects/deuterium-widget",
-      "sourceRoot": "projects/deuterium-widget/src",
-      "projectType": "library",
-      "prefix": "ws",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/deuterium-widget/tsconfig.lib.json",
-            "project": "projects/deuterium-widget/ng-package.json"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/deuterium-widget/src/test.ts",
-            "tsConfig": "projects/deuterium-widget/tsconfig.spec.json",
-            "karmaConfig": "projects/deuterium-widget/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/deuterium-widget/tsconfig.lib.json",
-              "projects/deuterium-widget/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "shared-lib": {
       "root": "projects/shared-lib",
       "sourceRoot": "projects/shared-lib/src",
@@ -414,7 +379,131 @@
           }
         }
       }
-    }
+    },
+    "deuterium-widget": {
+      "root": "projects/deuterium-widget/",
+      "sourceRoot": "projects/deuterium-widget/src",
+      "projectType": "application",
+      "prefix": "ws",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true,
+          "spec": false
+        },
+        "@schematics/angular:class": {
+          "spec": false
+        },
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:guard": {
+          "spec": false
+        },
+        "@schematics/angular:module": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:service": {
+          "spec": false
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:build",
+          "options": {
+            "outputPath": "dist/deuterium-widget",
+            "index": "projects/deuterium-widget/src/index.html",
+            "main": "projects/deuterium-widget/src/main.ts",
+            "polyfills": "projects/deuterium-widget/src/polyfills.ts",
+            "tsConfig": "projects/deuterium-widget/tsconfig.app.json",
+            "assets": [
+              "projects/deuterium-widget/src/favicon.ico",
+              "projects/deuterium-widget/src/assets"
+            ],
+            "styles": [
+              "projects/deuterium-widget/src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/@webcomponents/custom-elements/src/native-shim.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/deuterium-widget/src/environments/environment.ts",
+                  "with": "projects/deuterium-widget/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "deuterium-widget:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "deuterium-widget:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "deuterium-widget:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/deuterium-widget/src/test.ts",
+            "polyfills": "projects/deuterium-widget/src/polyfills.ts",
+            "tsConfig": "projects/deuterium-widget/tsconfig.spec.json",
+            "karmaConfig": "projects/deuterium-widget/karma.conf.js",
+            "styles": [
+              "projects/deuterium-widget/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/deuterium-widget/src/favicon.ico",
+              "projects/deuterium-widget/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/deuterium-widget/tsconfig.app.json",
+              "projects/deuterium-widget/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
   },
   "defaultProject": "workspace-js"
 }
