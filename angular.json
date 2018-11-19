@@ -345,34 +345,6 @@
         }
       }
     },
-    "hydrogen-widget-e2e": {
-      "root": "projects/hydrogen-widget-e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/hydrogen-widget-e2e/protractor.conf.js",
-            "devServerTarget": "hydrogen-widget:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "hydrogen-widget:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/hydrogen-widget-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "deuterium-widget": {
       "root": "projects/deuterium-widget",
       "sourceRoot": "projects/deuterium-widget/src",
