@@ -1,25 +1,25 @@
 import { BrowserModule } from "@angular/platform-browser";
 import {Injector, NgModule} from "@angular/core";
 
-import { AppComponent } from "./app.component";
+import { DeuteriumWidgetComponent } from "./deuterium-widget.component";
 import {createCustomElement} from "@angular/elements";
 
 @NgModule({
   declarations: [
-    AppComponent
+    DeuteriumWidgetComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  entryComponents: [AppComponent]
+  entryComponents: [DeuteriumWidgetComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {
   }
 
   ngDoBootstrap() {
-    const AppComponentElement = createCustomElement(AppComponent, { injector: this.injector });
+    const AppComponentElement = createCustomElement(DeuteriumWidgetComponent, { injector: this.injector });
     customElements.define("deuterium-widget", AppComponentElement);
   }
 }

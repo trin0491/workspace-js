@@ -2,8 +2,8 @@ import { Component } from "@angular/core";
 
 @Component({
   selector: "ws-root",
-  template: "<p>hydrogen-widget</p>",
+  template: "<p>deuterium-widget</p>",
   styles: []
 })
-export class AppComponent {
+export class DeuteriumWidgetComponent {
 }

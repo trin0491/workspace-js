@@ -1,18 +1,18 @@
 import { BrowserModule } from "@angular/platform-browser";
 import {Injector, NgModule} from "@angular/core";
 
-import { AppComponent } from "./app.component";
+import { HydrogenWidgetComponent } from "./hydrogen-widget.component";
 import {createCustomElement} from "@angular/elements";
 
 @NgModule({
   declarations: [
-    AppComponent
+    HydrogenWidgetComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  entryComponents: [AppComponent]
+  entryComponents: [HydrogenWidgetComponent]
 })
 export class AppModule {
 
@@ -20,7 +20,7 @@ export class AppModule {
   }
 
   ngDoBootstrap() {
-    const AppComponentElement = createCustomElement(AppComponent, { injector: this.injector });
+    const AppComponentElement = createCustomElement(HydrogenWidgetComponent, { injector: this.injector });
     customElements.define("hydrogen-widget", AppComponentElement);
   }
 
