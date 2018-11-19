@@ -9,4 +9,4 @@ import {DeuteriumWidgetModule} from "deuterium-widget";
     DeuteriumWidgetModule
   ]
 })
-export class LazyModule { }
+export class SharedModule { }

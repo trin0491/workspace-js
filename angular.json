@@ -115,7 +115,7 @@
               }
             ],
             "lazyModules": [
-              "src/app/lazy.module.ts"
+              "src/app/shared.module.ts"
             ]
           },
           "configurations": {
