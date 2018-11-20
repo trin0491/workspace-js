@@ -10,11 +10,10 @@
     "e2e": "ng e2e",
     "all:build": "npm run rxjs:build && npm run deuterium:build && npm run hydrogen:build && npm run shared-lib:build",
     "rxjs:build": "rollup -c rollup.config.js && uglifyjs dist/rxjs-operators.umd.js -o dist/rxjs-operators.umd.min.js -c -m",
-    "deuterium:build": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true",
+    "deuterium:build": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --prod",
     "deuterium:watch": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch",
-    "hydrogen:build": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true",
+    "hydrogen:build": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --prod",
     "hydrogen:watch": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch",
-    "hydrogen:serve": "ng serve hydrogen-widget --extra-webpack-config webpack.extra.js --single-bundle true --vendor-chunk false",
     "shared-lib:build": "ng build shared-lib"
   },
   "private": true,
