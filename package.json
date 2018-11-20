@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "all:build": "npm run rxjs:build && npm run deuterium:build && npm run hydrogen:build && npm run shared-lib:build",
-    "rxjs:build": "rollup -c rollup.config.js",
+    "rxjs:build": "rollup -c rollup.config.js && uglifyjs dist/rxjs-operators.umd.js -o dist/rxjs-operators.umd.min.js -c -m",
     "deuterium:build": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true",
     "deuterium:watch": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch",
     "hydrogen:build": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true",
@@ -63,6 +63,7 @@
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.1"
+    "typescript": "~3.1.1",
+    "uglify-js": "^3.4.9"
   }
 }
