@@ -74,6 +74,11 @@
                 "lazy": true
               },
               {
+                "input": "dist/uranium-widget/main.js",
+                "bundleName": "uranium-widget",
+                "lazy": true
+              },
+              {
                 "input": "node_modules/@angular/core/bundles/core.umd.min.js",
                 "bundleName": "angular-core",
                 "lazy": true
@@ -504,6 +509,130 @@
         }
       }
     },
+    "uranium-widget": {
+      "root": "projects/uranium-widget/",
+      "sourceRoot": "projects/uranium-widget/src",
+      "projectType": "application",
+      "prefix": "ws",
+      "schematics": {
+        "@schematics/angular:component": {
+          "inlineStyle": true,
+          "spec": false
+        },
+        "@schematics/angular:class": {
+          "spec": false
+        },
+        "@schematics/angular:directive": {
+          "spec": false
+        },
+        "@schematics/angular:guard": {
+          "spec": false
+        },
+        "@schematics/angular:module": {
+          "spec": false
+        },
+        "@schematics/angular:pipe": {
+          "spec": false
+        },
+        "@schematics/angular:service": {
+          "spec": false
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "ngx-build-plus:build",
+          "options": {
+            "outputPath": "dist/uranium-widget",
+            "index": "projects/uranium-widget/src/index.html",
+            "main": "projects/uranium-widget/src/main.ts",
+            "polyfills": "projects/uranium-widget/src/polyfills.ts",
+            "tsConfig": "projects/uranium-widget/tsconfig.app.json",
+            "assets": [
+              "projects/uranium-widget/src/favicon.ico",
+              "projects/uranium-widget/src/assets"
+            ],
+            "styles": [
+              "projects/uranium-widget/src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/@webcomponents/custom-elements/src/native-shim.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/uranium-widget/src/environments/environment.ts",
+                  "with": "projects/uranium-widget/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "browserTarget": "uranium-widget:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "uranium-widget:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "uranium-widget:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/uranium-widget/src/test.ts",
+            "polyfills": "projects/uranium-widget/src/polyfills.ts",
+            "tsConfig": "projects/uranium-widget/tsconfig.spec.json",
+            "karmaConfig": "projects/uranium-widget/karma.conf.js",
+            "styles": [
+              "projects/uranium-widget/src/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "projects/uranium-widget/src/favicon.ico",
+              "projects/uranium-widget/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/uranium-widget/tsconfig.app.json",
+              "projects/uranium-widget/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
   },
   "defaultProject": "workspace-js"
 }

@@ -1,6 +1,6 @@
 module.exports = {
   "output": {
-    library: 'hydrogen-widget',
+    library: 'deuterium-widget',
     libraryTarget: 'umd'
   },
   "externals": {

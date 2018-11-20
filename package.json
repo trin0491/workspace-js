@@ -14,7 +14,9 @@
     "deuterium:watch": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch",
     "hydrogen:build": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --prod",
     "hydrogen:watch": "ng build hydrogen-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch",
-    "shared-lib:build": "ng build shared-lib"
+    "shared-lib:build": "ng build shared-lib",
+    "uranium:build": "ng build uranium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --prod",
+    "uranium:watch": "ng build uranium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch"
   },
   "private": true,
   "dependencies": {
