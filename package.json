@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "all:build": "npm run rxjs:build && npm run deuterium:build && npm run hydrogen:build && npm run shared-lib:build",
+    "all:build": "npm run rxjs:build && npm run deuterium:build && npm run hydrogen:build && npm run uranium:build && npm run shared-lib:build",
     "rxjs:build": "rollup -c rollup.config.js && uglifyjs dist/rxjs-operators.umd.js -o dist/rxjs-operators.umd.min.js -c -m",
     "deuterium:build": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --prod",
     "deuterium:watch": "ng build deuterium-widget --extra-webpack-config webpack.extra.js --output-hashing none --single-bundle true --watch",
