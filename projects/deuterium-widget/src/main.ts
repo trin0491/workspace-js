@@ -5,6 +5,6 @@ const start = performance.now();
 platformBrowserDynamic().bootstrapModule(AppModule)
   .then(() => {
     const duration = performance.now() - start;
-    console.log("Finished bootstrap: ", duration);
+    console.log("Deuterium bootstrap: ", duration);
   })
   .catch(err => console.error(err));
