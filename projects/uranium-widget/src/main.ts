@@ -8,5 +8,10 @@ if (environment.production) {
   enableProdMode();
 }
 
+const start = performance.now();
 platformBrowserDynamic().bootstrapModule(AppModule)
+  .then(() => {
+    const duration = performance.now() - start;
+    console.log("Uranium bootstrap: ", duration);
+  })
   .catch(err => console.error(err));
